@@ -1,9 +1,13 @@
 import React from 'react';
+import './header.css';
 
 function Header(){
     const anio =new Date().getFullYear();
     return(
-    <h1>Desde Header {anio}</h1>
+    <div className="">
+            <h1>Data Code Share {anio}</h1>
+    </div>
+
     )
 }
 

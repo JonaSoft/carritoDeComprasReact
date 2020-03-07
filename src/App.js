@@ -2,34 +2,42 @@ import React, { Fragment, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Producto from './components/Producto';
+import Contenedor from './components/Contenedor';
 
 function App() {
-//Listado de productos{}
-const [ productos, guardarProductos ] = useState([
-  { id:1, nombre:'ReactJS', precio: 60 },
-  { id:2, nombre:'ReactJS1', precio: 70 },
-  { id:3, nombre:'ReactJS2', precio: 80 },
-  { id:4, nombre:'ReactJS3', precio: 90 },
-  { id:5, nombre:'ReactJSMaster', precio: 100 }
-
+//Listado de VUELOS{}
+const [ productos, guardarFlights ] = useState([
+  { id:1, nombre:'AF3650', operator: 60 },
+  { id:2, nombre:'AF4585', operator: 70 },
+  { id:3, nombre:'AM5656', operator: 80 },
+  { id:4, nombre:'AM7585', operator: 90 },
+  { id:5, nombre:'AM4697', operator: 100 }
 ]);
+const [contenedor, agregarContenedor] = useState([])
 //Obtener Fecha 
 const fecha = new Date().getFullYear();
   return (
     <Fragment>
-      <Header />
-      <h1>Primer App</h1>
-      <h2>Listado de Productos</h2>
-      {productos.map(producto =>(
-        <Producto 
-          key = {producto.id}
-          producto1 = {producto}
+        <Header />
+        
+        <h2>List Flights</h2>
+        
+        {productos.map(producto =>(
+            <Producto 
+                key = {producto.id}
+                producto = {producto}
+                productos = {productos}
+                contenedor = {contenedor}
+                agregarContenedor = {agregarContenedor}
+            />
+        ))}
+         <Contenedor
+             contenedor = {contenedor}
+          />
+        <Footer
+       
+        fecha={fecha}
         />
-      ))}
-
-      <Footer
-       fecha={fecha}
-       />
       
     </Fragment>
   );
