@@ -6,7 +6,7 @@ import Contenedor from './components/Contenedor';
 
 function App() {
 //Listado de VUELOS{}
-const [ productos, guardarFlights ] = useState([
+const [ flights, guardarFlights ] = useState([
   { id:1, nombre:'AF3650', operator: 60 },
   { id:2, nombre:'AF4585', operator: 70 },
   { id:3, nombre:'AM5656', operator: 80 },
@@ -22,17 +22,18 @@ const fecha = new Date().getFullYear();
         
         <h2>List Flights</h2>
         
-        {productos.map(producto =>(
+        {flights.map(producto =>(
             <Producto 
                 key = {producto.id}
-                producto = {producto}
-                productos = {productos}
+                flight = {producto}
+                flights = {flights}
                 contenedor = {contenedor}
                 agregarContenedor = {agregarContenedor}
             />
         ))}
          <Contenedor
              contenedor = {contenedor}
+             agregarContenedor = {agregarContenedor}
           />
         <Footer
        

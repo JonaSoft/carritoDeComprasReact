@@ -1,28 +1,47 @@
 import React from 'react';
-const Producto = ({producto, contenedor, agregarContenedor, productos}) => {
-    const{ nombre, operator, id} = producto;
+const Producto = ({flight, contenedor, agregarContenedor, flights}) => {
+    const{ nombre, operator, id} = flight;
     
     //funcion para agregar al carrito de compras
     const SeleccionarProducto = id => {
-        const producto = productos.filter(producto => producto.id === id)[0];
+        const flight = flights.filter(flight => flight.id === id)[0];
                 agregarContenedor([
                     ...contenedor,
-                    producto
+                    flight
                 ]);
-        console.log(contenedor);
-        //console.log(producto)
-        
     }
    
+    const EliminarProducto = id => {
+        const flights = contenedor.filter(flight => flight.id !== id);
+        //colocar flight en el State
+        agregarContenedor(flights)
+    }
+
+    
+
     
     return ( 
         <div>
-            <h3>from bdata  {nombre}</h3>
-             <p>operator: {operator} </p>
-             <button
+            <h3>from bdata:  {nombre}</h3>
+            <p>operator: {operator} </p>
+            {flights
+            ?
+            (
+                <button
                  type="button"
                  onClick={()=> SeleccionarProducto(id)}
-                 >Buscar</button>
+                 >Search
+                </button>
+            )
+            :
+            (
+                <button
+                 type="button"
+                 onClick={()=> EliminarProducto(id)}
+                 >Delete
+                </button>
+            )
+            } 
                  
         </div>
     
